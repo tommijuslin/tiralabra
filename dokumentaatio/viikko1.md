@@ -2,7 +2,7 @@
 
 :watch: 5 tuntia
 
-Aloitin kurssin katsomalla aloitusluennon kalvot läpi ja tutustumalla kurssimateriaaliin. Olen tehnyt jo parilla muulla kurssilla peliaiheisia projekteja, joten päätin tällä kertaa ottaa aiheeksi jotain erilaista. Annetuista aiheista kirjoitusvirheiden korjaaminen vaikutti mielenkiintoisimmalta aiheelta.
+Aloitin kurssin katsomalla aloitusluennon kalvot läpi ja tutustumalla kurssimateriaaliin. Olen tehnyt jo parilla muulla kurssilla peliaiheisia projekteja, joten päätin tällä kertaa ottaa aiheeksi jotain erilaista. Annetuista aiheista kirjoitusvirheiden korjaaminen vaikutti mielenkiintoisimmalta.
 
 Määritelmäraporttia varten tutustuin materiaalissa mainittuihin Damerau-Levenshteinin etäisyyteen ja trie-tietorakenteeseen. Tämän viikon kaikki aika upposi aika pitkälti näiden tutkisteluun sillä molemmat olivat uusia tuttavuuksia.
 
