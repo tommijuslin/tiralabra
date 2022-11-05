@@ -1,4 +1,4 @@
-# Tiralabra
+# Kirjoitusvirheiden korjaaja
 
 Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 
