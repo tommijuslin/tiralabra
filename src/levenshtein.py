@@ -7,14 +7,16 @@ class Levenshtein:
     self.taulu = []
   
   def etaisyys(self, sana1, sana2):
-    self.sana1 = sana1
-    self.sana2 = sana2
-    self.rivit = len(sana1) + 1
-    self.sarakkeet = len(sana2) + 1
-
+    self._alusta_ja_siivoa_sanat(sana1, sana2)
     self._alusta_taulu()
 
     return self._laske_etaisyys()
+  
+  def _alusta_ja_siivoa_sanat(self, sana1, sana2):
+    self.sana1 = sana1.lower()
+    self.sana2 = sana2.lower()
+    self.rivit = len(sana1) + 1
+    self.sarakkeet = len(sana2) + 1
   
   def _alusta_taulu(self):
     del self.taulu[:]
