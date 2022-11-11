@@ -1,10 +1,21 @@
 class Levenshtein:
-  def __init__(self):
+  def __init__(self, sanasto):
+    self.sanasto = sanasto
     self.sana1 = ""
     self.sana2 = ""
     self.rivit = 0
     self.sarakkeet = 0
     self.taulu = []
+  
+  def etsi(self, syote, max_etaisyys):
+    sanat = []
+
+    for kohdesana in self.sanasto:
+      etaisyys = self.etaisyys(syote, kohdesana)
+      if etaisyys <= max_etaisyys:
+        sanat.append([kohdesana, etaisyys])
+      
+    return sanat
   
   def etaisyys(self, sana1, sana2):
     self._alusta_ja_siivoa_sanat(sana1, sana2)

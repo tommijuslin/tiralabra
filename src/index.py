@@ -4,7 +4,8 @@ from levenshtein import Levenshtein
 
 def main():
   io = KonsoliIO()
-  levenshtein = Levenshtein()
+  sanasto = ["believe", "calendar", "caribbean"]
+  levenshtein = Levenshtein(sanasto)
   app = App(io, levenshtein)
 
   app.kaynnista()
