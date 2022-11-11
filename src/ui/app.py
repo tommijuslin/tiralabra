@@ -1,16 +1,14 @@
-from levenshtein import levenshtein
-
 KOMENNOT = {
-  "1": "laske Levenshtein-etäisyys",
-  "x": "lopeta",
+  "1:": "laske Levenshtein-etäisyys",
+  "x:": "lopeta",
 }
 
 class App():
-  def __init__(self, io):
+  def __init__(self, io, levenshtein):
     self._io = io
+    self._levenshtein = levenshtein
 
   def kaynnista(self):
-
     while True:
       self._tulosta_ohje()
       komento = self._io.lue("komento: ")
@@ -27,4 +25,4 @@ class App():
   def _laske_etaisyys(self):
     sana1 = self._io.lue("ensimmäinen sana: ")
     sana2 = self._io.lue("toinen sana: ")
-    self._io.tulosta(levenshtein(sana1, sana2))
+    self._io.tulosta(self._levenshtein.etaisyys(sana1, sana2))

@@ -1,9 +1,11 @@
 from ui.app import App
 from ui.konsoli_io import KonsoliIO
+from levenshtein import Levenshtein
 
 def main():
   io = KonsoliIO()
-  app = App(io)
+  levenshtein = Levenshtein()
+  app = App(io, levenshtein)
 
   app.kaynnista()
 
