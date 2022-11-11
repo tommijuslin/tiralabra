@@ -1,6 +1,6 @@
 KOMENNOT = {
   "1:": "laske Levenshtein-etäisyys",
-  "x:": "lopeta",
+  "x": "lopeta",
 }
 
 class App():

@@ -11,11 +11,12 @@ class Levenshtein:
     self.sana2 = sana2
     self.rivit = len(sana1) + 1
     self.sarakkeet = len(sana2) + 1
-    self.alusta_taulu()
 
-    return self.laske_etaisyys()
+    self._alusta_taulu()
+
+    return self._laske_etaisyys()
   
-  def alusta_taulu(self):
+  def _alusta_taulu(self):
     del self.taulu[:]
 
     self.taulu = [[0 for sarake in range(self.sarakkeet)] for rivi in range(self.rivit)]
@@ -26,7 +27,7 @@ class Levenshtein:
     for sarake in range(1, self.sarakkeet):
       self.taulu[0][sarake] = sarake
 
-  def laske_etaisyys(self):
+  def _laske_etaisyys(self):
     muutos = 0
     for sarake in range(1, self.sarakkeet):
       for rivi in range(1, self.rivit):
