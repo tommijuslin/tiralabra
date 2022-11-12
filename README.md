@@ -1,6 +1,7 @@
 # Kirjoitusvirheiden korjaaja
 
 ![GitHub Actions](https://github.com/tommijuslin/tiralabra/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/tommijuslin/tiralabra/branch/main/graph/badge.svg?token=SNMHAHCGNT)](https://codecov.io/gh/tommijuslin/tiralabra)
 
 Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 
