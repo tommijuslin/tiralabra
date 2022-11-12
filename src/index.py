@@ -1,14 +1,14 @@
-from ui.app import App
+from ui.ohjelma import Ohjelma
 from ui.konsoli_io import KonsoliIO
-from levenshtein import Levenshtein
+from entities.levenshtein import Levenshtein
 
 def main():
   io = KonsoliIO()
   sanasto = ["believe", "calendar", "caribbean"]
   levenshtein = Levenshtein(sanasto)
-  app = App(io, levenshtein)
+  ohjelma = Ohjelma(io, levenshtein)
 
-  app.kaynnista()
+  ohjelma.kaynnista()
 
 if __name__ == "__main__":
     main()
