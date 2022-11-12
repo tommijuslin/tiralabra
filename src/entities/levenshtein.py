@@ -1,5 +1,5 @@
 class Levenshtein:
-  """Luokka kahden sanan välisen (editointi)etäisyyden laskemiseen ilman siirtoja."""
+  """Luokka kahden sanan välisen etäisyyden laskemiseen ilman siirtoja."""
 
   def __init__(self, sanakirja):
     """Luokan konstruktori.
