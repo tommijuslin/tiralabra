@@ -1,5 +1,7 @@
 # Kirjoitusvirheiden korjaaja
 
+![GitHub Actions](https://github.com/tommijuslin/tiralabra/workflows/CI/badge.svg)
+
 Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 
 ## Dokumentaatio
