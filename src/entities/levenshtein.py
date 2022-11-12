@@ -63,7 +63,7 @@ class Levenshtein:
     self.sana2 = sana2.strip().lower()
   
   def _alusta_taulu(self):
-    """Alustaa etäisyyden laskemiseen käyttävän taulukon."""
+    """Alustaa etäisyyden laskemiseen käytettävän taulukon."""
 
     del self.taulu[:]
 
