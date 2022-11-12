@@ -9,3 +9,4 @@ Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 ## Viikkoraportit
 
 - [Viikko 1](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/viikko1.md)
+- [Viikko 2](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/viikko2.md)
