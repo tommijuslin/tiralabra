@@ -1,9 +1,13 @@
 import unittest
 from entities.levenshtein import Levenshtein
+from entities.trie_solmu import TrieSolmu
 
 class TestLevenshtein(unittest.TestCase):
   def setUp(self):
-    sanakirja = ["believe", "calendar", "caribbean"]
+    sanakirja = TrieSolmu()
+    sanasto = ["believe", "calendar", "caribbean"]
+    for sana in sanasto:
+      sanakirja.lisaa_sana(sana)
     self.levenshtein = Levenshtein(sanakirja)
 
   def test_etaisyys_nolla_kun_sanat_samoja(self):
@@ -29,4 +33,4 @@ class TestLevenshtein(unittest.TestCase):
   def test_etsi_palauttaa_oikeat_sanat_ja_etaisyydet_jos_kohdesana_sanakirjassa(self):
     sanat = self.levenshtein.etsi("beleive", 2)
 
-    self.assertEqual(sanat[0], ["believe", 2])
+    self.assertEqual(sanat[0], ("believe", 2))
