@@ -1,6 +1,7 @@
 KOMENNOT = {
   "1:": "tarkista sanan oikeinkirjoitus",
-  "2:": "laske Levenshtein-etäisyys",
+  "2:": "lisää sana",
+  "3:": "laske Levenshtein-etäisyys",
   "x:": "lopeta",
 }
 
@@ -32,6 +33,8 @@ class Ohjelma():
       elif komento == "1":
         self._tarkista_oikeinkirjoitus()
       elif komento == "2":
+        self._lisaa_sana()
+      elif komento == "3":
         self._laske_etaisyys()
 
   def _tulosta_ohje(self):
@@ -39,14 +42,6 @@ class Ohjelma():
 
     for komento, kuvaus in KOMENNOT.items():
       print(komento, kuvaus)
-
-  def _laske_etaisyys(self):
-    """Laskee annettujen sanojen välisen etäisyyden."""
-
-    sana1 = self._io.lue("ensimmäinen sana: ")
-    sana2 = self._io.lue("toinen sana: ")
-
-    self._io.tulosta(f"\nEditointietäisyys: {self._levenshtein.etaisyys(sana1, sana2)}.\n")
 
   def _tarkista_oikeinkirjoitus(self):
     """Tulostaa annetun sanan todennäköisimmät korjausvaihtoehdot."""
@@ -56,4 +51,17 @@ class Ohjelma():
     sanat = self._levenshtein.etsi(sana, max_etaisyys)
 
     for sana in sanat:
-      self._io.tulosta(f"{sana[0]}, {sana[1]}")
+      self._io.tulosta(sana)
+#      self._io.tulosta(f"{sana[0]}, {sana[1]}")
+  
+  def lisaa_sana(self):
+    pass
+
+  def _laske_etaisyys(self):
+    """Laskee annettujen sanojen välisen etäisyyden."""
+
+    sana1 = self._io.lue("ensimmäinen sana: ")
+    sana2 = self._io.lue("toinen sana: ")
+
+    self._io.tulosta(f"\nEditointietäisyys: {self._levenshtein.etaisyys(sana1, sana2)}.\n")
+

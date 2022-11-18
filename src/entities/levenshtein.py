@@ -20,26 +20,38 @@ class Levenshtein:
     self.rivit = 0
     self.sarakkeet = 0
   
-  def etsi(self, syote, max_etaisyys):
-    """Etsii sanat, joiden etäisyys annettuun sanaan on enintään annettu maksimietäisyys.
-
-    Parametrit:
-      syote: etsittävä sana
-      max_etaisyys: sanojen maksimietäisyys etsittävästä sanasta
-    
-    Palauttaa:
-      listan löydetyistä sanoista
-
-    """
-
+  def etsi(self, sana, max_etaisyys):
+    rivi = range(len(sana) + 1)
     sanat = []
 
-    for kohdesana in self.sanakirja:
-      etaisyys = self.etaisyys(syote, kohdesana)
-      if etaisyys <= max_etaisyys:
-        sanat.append([kohdesana, etaisyys])
-      
+    for kirjain in self.sanakirja.lapset:
+      self.etsi_rekursiivisesti(self.sanakirja.lapset[kirjain], kirjain, sana, rivi,
+        sanat, max_etaisyys)
+
     return sanat
+  
+  def etsi_rekursiivisesti(self, solmu, kirjain, sana, edellinen_rivi, sanat, max_etaisyys):
+    sarakkeet = len(sana) + 1
+    rivi = [edellinen_rivi[0] + 1]
+
+    for sarake in range(1, sarakkeet):
+      if sana[sarake - 1] == kirjain:
+        muutos = 0
+      else:
+        muutos = 1
+
+      rivi.append(min(edellinen_rivi[sarake] + 1,
+                      rivi[sarake - 1] + 1,
+                      edellinen_rivi[sarake - 1] + muutos))
+
+    if rivi[-1] <= max_etaisyys and solmu.sana != None:
+        sanat.append((solmu.sana, rivi[-1]))
+
+    if min(rivi) <= max_etaisyys:
+        for kirjain in solmu.lapset:
+            self.etsi_rekursiivisesti(solmu.lapset[kirjain], kirjain, sana, rivi, 
+                sanat, max_etaisyys)
+
   
   def etaisyys(self, sana1, sana2):
     """Palauttaa sanojen välisen etäisyyden.
