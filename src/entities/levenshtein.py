@@ -31,6 +31,7 @@ class Levenshtein:
       listan löydetyistä sanoista
 
     """
+
     sanat = []
 
     for kohdesana in self.sanakirja:
