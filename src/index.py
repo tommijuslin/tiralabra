@@ -6,7 +6,7 @@ from entities.trie_solmu import TrieSolmu
 def main():
   io = KonsoliIO()
   sanakirja = TrieSolmu()
-  sanasto = ["believe", "calendar", "caribbean"]
+  sanasto = ["believe", "calendar", "caribbean", "sunday", "sitting"]
   for sana in sanasto:
     sanakirja.lisaa_sana(sana)
   levenshtein = Levenshtein(sanakirja)

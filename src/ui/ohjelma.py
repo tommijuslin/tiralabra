@@ -52,7 +52,6 @@ class Ohjelma():
 
     for sana in sanat:
       self._io.tulosta(sana)
-#      self._io.tulosta(f"{sana[0]}, {sana[1]}")
   
   def lisaa_sana(self):
     pass
