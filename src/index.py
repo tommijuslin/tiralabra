@@ -8,7 +8,7 @@ def main():
   sanakirja = TrieSolmu()
   sanasto = ["believe", "calendar", "caribbean", "sunday", "sitting"]
   for sana in sanasto:
-    sanakirja.lisaa_sana(sana)
+    sanakirja.lisaa(sana)
   levenshtein = Levenshtein(sanakirja)
   ohjelma = Ohjelma(io, levenshtein)
 
