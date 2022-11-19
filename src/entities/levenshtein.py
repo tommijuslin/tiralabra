@@ -9,7 +9,6 @@ class Levenshtein:
     """
 
     self.sanakirja = sanakirja
-    self.taulu = []
   
   def etsi(self, sana, max_etaisyys):
     """Etsii sanakirjasta sanat, joiden etäisyys annettuun sanaan
@@ -39,7 +38,7 @@ class Levenshtein:
     """Sanojen etsimiseen käytettävä apufunktio.
     
     Parametrit:
-      solmu: Trie-solmu
+      solmu: trie-solmu, joka kuvaa yksittäistä kirjainta
       kirjain: seuraavaksi tarkasteltava kirjain
       edellinen_kirjain: viimeksi tarkasteltu kirjain
       sana: etsittävä sana
@@ -49,7 +48,8 @@ class Levenshtein:
       max_etaisyys: sanojen maksimietäisyys etsittävästä sanasta
     """
 
-    nykyinen_rivi = self._laske_etaisyys(sana, kirjain, edellinen_kirjain, edellinen_rivi, e_edellinen_rivi)
+    nykyinen_rivi = self._laske_etaisyys(sana, kirjain, edellinen_kirjain,
+      edellinen_rivi, e_edellinen_rivi)
 
     if nykyinen_rivi[-1] <= max_etaisyys and solmu.sana != None:
         sanat.append((solmu.sana, nykyinen_rivi[-1]))
@@ -66,7 +66,9 @@ class Levenshtein:
     Parametrit:
       sana: vertailtava sana
       kirjain: vertailukohteen seuraava kirjain
+      edellinen_kirjain: viimeksi tarkasteltu kirjain
       edellinen_rivi: Levenshtein-matriisin edellinen rivi
+      e_edellinen_rivi: Levenshtein-matriisin edellisestä edellinen rivi
     
     Palauttaa:
       Levenshtein-matriisin rivin
