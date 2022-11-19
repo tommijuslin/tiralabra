@@ -7,7 +7,7 @@ class TestLevenshtein(unittest.TestCase):
     sanakirja = TrieSolmu()
     sanasto = ["believe", "calendar", "caribbean"]
     for sana in sanasto:
-      sanakirja.lisaa_sana(sana)
+      sanakirja.lisaa(sana)
     self.levenshtein = Levenshtein(sanakirja)
 
   def test_etaisyys_nolla_kun_sanat_samoja(self):

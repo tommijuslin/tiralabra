@@ -78,12 +78,15 @@ class Levenshtein:
     return taulu[rivi][-1]
 
   def _laske_etaisyys(self, sana, kirjain, edellinen_rivi):
-    """Laskee sanojen välisen etäisyyden
+    """Laskee Levenshtein-matriisin yhden rivin.
     
     Parametrit:
       sana: vertailtava sana
       kirjain: vertailukohteen seuraava kirjain
       edellinen_rivi: Levenshtein-matriisin edellinen rivi
+    
+    Palauttaa:
+      Levenshtein-matriisin rivin
     """
 
     nykyinen_rivi = [edellinen_rivi[0] + 1]
