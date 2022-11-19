@@ -103,6 +103,6 @@ class Levenshtein:
       nykyinen_rivi.append(min(poisto, lisays, vaihto))
     
     return nykyinen_rivi
-  
+
   def _siisti_sana(self, sana):
     return sana.strip().lower()
