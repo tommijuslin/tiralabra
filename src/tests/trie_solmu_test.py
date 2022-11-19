@@ -15,3 +15,9 @@ class TestTrieSolmu(unittest.TestCase):
     sana = self.sanakirja.etsi("sana")
 
     self.assertFalse(sana)
+  
+  def test_sanaa_ei_loydy_vaikka_sama_alkuosa(self):
+    self.sanakirja.lisaa("sanakirja")
+    sana = self.sanakirja.etsi("sana")
+
+    self.assertFalse(sana)
