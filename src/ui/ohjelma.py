@@ -53,8 +53,9 @@ class Ohjelma():
     for sana in sanat:
       self._io.tulosta(sana)
   
-  def lisaa_sana(self):
-    pass
+  def _lisaa_sana(self):
+    sana = self._io.lue("sana: ")
+    self._levenshtein.sanakirja.lisaa(sana)
 
   def _laske_etaisyys(self):
     """Laskee annettujen sanojen välisen etäisyyden."""
@@ -63,4 +64,3 @@ class Ohjelma():
     sana2 = self._io.lue("toinen sana: ")
 
     self._io.tulosta(f"\nEditointietäisyys: {self._levenshtein.etaisyys(sana1, sana2)}.\n")
-

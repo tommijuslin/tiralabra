@@ -31,6 +31,6 @@ class TestLevenshtein(unittest.TestCase):
     self.assertEqual(len(sanat), 0)
 
   def test_etsi_palauttaa_oikeat_sanat_ja_etaisyydet_jos_kohdesana_sanakirjassa(self):
-    sanat = self.levenshtein.etsi("beleive", 2)
+    sanat = self.levenshtein.etsi("beleive", 1)
 
-    self.assertEqual(sanat[0], ("believe", 2))
+    self.assertEqual(sanat[0], ("believe", 1))
