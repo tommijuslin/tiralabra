@@ -110,9 +110,15 @@ class Levenshtein:
     
     taulu = [range(len(sana1) + 1)]
     
+    edellinen_kirjain = None
+    e_edellinen_rivi = None
     rivi = 0
-    for kirjain in sana2:
-      taulu.append(self._laske_etaisyys(sana1, kirjain, None, taulu[rivi], None))
+    for indeksi, kirjain in enumerate(sana2):
+      if indeksi > 0:
+        edellinen_kirjain = sana2[indeksi - 1]
+        e_edellinen_rivi = taulu[rivi - 1]
+      taulu.append(self._laske_etaisyys(sana1, kirjain, edellinen_kirjain,
+        taulu[rivi], e_edellinen_rivi))
       rivi += 1
     
     return taulu[rivi][-1]
