@@ -26,11 +26,11 @@ class TestLevenshtein(unittest.TestCase):
     self.assertEqual(etaisyys, 3)
 
   def test_etsi_ei_palauta_sanaa_jos_kohdesana_ei_sanakirjassa(self):
-    sanat = self.levenshtein.etsi("cemetary", 1)
+    sanat = self.levenshtein.etsi("cemetary")
 
-    self.assertEqual(len(sanat), 1)
+    self.assertEqual(len(sanat), 0)
 
-  def test_etsi_palauttaa_oikeat_sanat_ja_etaisyydet_jos_kohdesana_sanakirjassa(self):
+  def test_etsi_palauttaa_korjatun_sanan(self):
     sanat = self.levenshtein.etsi("beleive", 1)
 
-    self.assertEqual(sanat[0], ("believe", 1, 1))
+    self.assertEqual(sanat[0][0], ("believe"))
