@@ -11,8 +11,9 @@ class TrieSolmu:
 
     self.lapset = {}
     self.sana = None
+    self.frekvenssi = None
   
-  def lisaa(self, sana):
+  def lisaa(self, sana, frekvenssi=1):
     """Lisää sanan sanakirjaan
     
     Parametri:
@@ -27,6 +28,7 @@ class TrieSolmu:
       solmu = solmu.lapset[kirjain]
 
     solmu.sana = sana
+    solmu.frekvenssi = frekvenssi
 
   def etsi(self, sana):
     """Etsii sanan sanakirjasta

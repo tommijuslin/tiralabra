@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 KOMENNOT = {
   "1:": "tarkista sanan oikeinkirjoitus",
   "2:": "lisää sana",
@@ -47,11 +49,13 @@ class Ohjelma():
     """Tulostaa annetun sanan todennäköisimmät korjausvaihtoehdot."""
 
     sana = self._io.lue("sana: ")
-    max_etaisyys = int(self._io.lue("maksimietäisyys: "))
-    sanat = self._levenshtein.etsi(sana, max_etaisyys)
+    # max_etaisyys = int(self._io.lue("maksimietäisyys: "))
+    sanat = self._levenshtein.etsi(sana)
 
-    for sana in sanat:
-      self._io.tulosta(sana)
+    sanat.sort(key=itemgetter(2),reverse=True)
+    sanat.sort(key=itemgetter(1))
+
+    self._io.tulosta(f"==> {sanat[0][0]}")
   
   def _lisaa_sana(self):
     sana = self._io.lue("sana: ")
@@ -63,4 +67,4 @@ class Ohjelma():
     sana1 = self._io.lue("ensimmäinen sana: ")
     sana2 = self._io.lue("toinen sana: ")
 
-    self._io.tulosta(f"\nEditointietäisyys: {self._levenshtein.etaisyys(sana1, sana2)}.\n")
+    self._io.tulosta(f"==> {self._levenshtein.etaisyys(sana1, sana2)}")
