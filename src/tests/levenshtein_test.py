@@ -28,7 +28,7 @@ class TestLevenshtein(unittest.TestCase):
   def test_etsi_ei_palauta_sanaa_jos_kohdesana_ei_sanakirjassa(self):
     sanat = self.levenshtein.etsi("cemetary", 1)
 
-    self.assertEqual(len(sanat), 0)
+    self.assertEqual(len(sanat), 1)
 
   def test_etsi_palauttaa_oikeat_sanat_ja_etaisyydet_jos_kohdesana_sanakirjassa(self):
     sanat = self.levenshtein.etsi("beleive", 1)

@@ -31,6 +31,9 @@ class Levenshtein:
       self._etsi_rekursiivisesti(self.sanakirja.lapset[kirjain], kirjain, None, sana,
         nykyinen_rivi, None, sanat, max_etaisyys)
 
+    if not sanat:
+      return [(sana, 1, 1)]
+
     return sanat
   
   def _etsi_rekursiivisesti(self, solmu, kirjain, edellinen_kirjain, sana,

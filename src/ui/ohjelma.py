@@ -1,25 +1,24 @@
-from operator import itemgetter
 
 KOMENNOT = {
-  "1:": "tarkista sanan oikeinkirjoitus",
-  "2:": "lisää sana",
-  "3:": "laske Levenshtein-etäisyys",
+  "1:": "korjaa sana tai lause",
+  "2:": "laske editointietäisyys",
+  "3:": "lisää sana",
   "x:": "lopeta",
 }
 
 class Ohjelma():
   """Pääohjelma."""
 
-  def __init__(self, io, levenshtein):
+  def __init__(self, io, service):
     """Luokan konstruktori.
     
     Parametrit:
       io: lukemiseen ja tulostamiseen käytettävä apuluokka
-      levenshtein: editointietäisyyksien laskemiseen käytettävä luokka
+      service: editointietäisyyksien laskemiseen käytettävä luokka
     """
 
     self._io = io
-    self._levenshtein = levenshtein
+    self._service = service
 
   def kaynnista(self):
     """Ohjelman pääsilmukka.
@@ -33,11 +32,11 @@ class Ohjelma():
       if komento == "x":
         break
       elif komento == "1":
-        self._tarkista_oikeinkirjoitus()
+        self._korjaa_lause()
       elif komento == "2":
-        self._lisaa_sana()
-      elif komento == "3":
         self._laske_etaisyys()
+      elif komento == "3":
+        self._lisaa_sana()
 
   def _tulosta_ohje(self):
     """Tulostaa käyttöohjeet."""
@@ -45,26 +44,26 @@ class Ohjelma():
     for komento, kuvaus in KOMENNOT.items():
       print(komento, kuvaus)
 
-  def _tarkista_oikeinkirjoitus(self):
-    """Tulostaa annetun sanan todennäköisimmät korjausvaihtoehdot."""
+  def _korjaa_lause(self):
+    """Korjaa syötteen kirjoitusvirheet."""
 
-    sana = self._io.lue("sana: ")
-    # max_etaisyys = int(self._io.lue("maksimietäisyys: "))
-    sanat = self._levenshtein.etsi(sana)
+    self._io.tulosta("Syötä sana tai lause (tyhjä lopettaa)")
 
-    sanat.sort(key=itemgetter(2),reverse=True)
-    sanat.sort(key=itemgetter(1))
-
-    self._io.tulosta(f"==> {sanat[0][0]}")
+    while True:
+      syote = self._io.lue("> ").split()
+      if not syote:
+        break
+      korjattu_lause = self._service.korjaa_lause(syote)
+      self._io.tulosta(f"==> {korjattu_lause}")
   
-  def _lisaa_sana(self):
-    sana = self._io.lue("sana: ")
-    self._levenshtein.sanakirja.lisaa(sana)
-
   def _laske_etaisyys(self):
     """Laskee annettujen sanojen välisen etäisyyden."""
 
-    sana1 = self._io.lue("ensimmäinen sana: ")
-    sana2 = self._io.lue("toinen sana: ")
+    sana1 = self._io.lue("1. sana: ")
+    sana2 = self._io.lue("2. sana: ")
 
-    self._io.tulosta(f"==> {self._levenshtein.etaisyys(sana1, sana2)}")
+    self._io.tulosta(f"==> {self._service.laske_etaisyys(sana1, sana2)}")
+
+  def _lisaa_sana(self):
+    sana = self._io.lue("sana: ")
+    self._service.lisaa_sana(sana)
