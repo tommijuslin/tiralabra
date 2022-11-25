@@ -1,5 +1,3 @@
-from colorama import Fore
-
 KOMENNOT = {
   "1:": "korjaa sana tai lause",
   "2:": "laske editointietäisyys",
@@ -56,14 +54,7 @@ class Ohjelma():
         break
       korjattu_lause = self._service.korjaa_lause(syote)
 
-      tulos = ""
-      for sana in korjattu_lause:
-        if sana[-1] == 0:
-          tulos += f"{sana[0]} "
-        else:
-          tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
-
-      self._io.tulosta(f"==> {tulos}")
+      self._io.tulosta(f"==> {self._service.muotoile_tulostus(korjattu_lause)}")
   
   def _laske_etaisyys(self):
     """Laskee annettujen sanojen välisen etäisyyden."""
