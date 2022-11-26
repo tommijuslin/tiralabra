@@ -3,13 +3,13 @@ from operator import itemgetter
 class LevenshteinService:
   """Välittää pyynnöt Levenshtein-luokalle."""
 
-  """Luokan konstruktori.
-
-  Parametrit:
-    levenshtein: Levenshtein-etäisyyksien laskemiseen käytettävä luokka
-  """
-
   def __init__(self, levenshtein):
+    """Luokan konstruktori.
+
+    Parametrit:
+      levenshtein: Levenshtein-etäisyyksien laskemiseen käytettävä luokka
+    """
+
     self._levenshtein = levenshtein
 
   def korjaa_lause(self, syote):
@@ -43,7 +43,7 @@ class LevenshteinService:
     """
 
     self._levenshtein.sanakirja.lisaa(sana)
-  
+
   def laske_etaisyys(self, sana1, sana2):
     """Laskee sanaparin välisen editointietäisyyden
 

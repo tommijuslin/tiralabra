@@ -3,7 +3,7 @@ class TrieSolmu:
 
   def __init__(self):
     """Luokan konstruktori
-    
+
     Parametrit:
       lapset: solmun lapset, tässä tapauksessa yksittäiset kirjaimet
       sana: määrittelee mihin solmuun (kirjaimeen) sana loppuu
@@ -12,10 +12,10 @@ class TrieSolmu:
     self.lapset = {}
     self.sana = None
     self.frekvenssi = None
-  
+
   def lisaa(self, sana, frekvenssi=1):
     """Lisää sanan sanakirjaan
-    
+
     Parametri:
       sana: lisättävä sana
     """
@@ -32,7 +32,7 @@ class TrieSolmu:
 
   def etsi(self, sana):
     """Etsii sanan sanakirjasta
-    
+
     Parametri:
       sana: etsittävä sana
 
@@ -46,8 +46,5 @@ class TrieSolmu:
       if kirjain not in solmu.lapset:
         return False
       solmu = solmu.lapset[kirjain]
-    
-    if solmu.sana != None:
-      return True
-    else:
-      return False
+
+    return solmu.sana is not None

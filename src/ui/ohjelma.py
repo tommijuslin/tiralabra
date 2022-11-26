@@ -59,7 +59,7 @@ class Ohjelma():
       korjattu_lause = self._service.korjaa_lause(syote)
 
       self._io.tulosta(f"==> {self._muotoile_tulostus(korjattu_lause)}")
-  
+
   def _laske_etaisyys(self):
     """Laskee annettujen sanojen välisen etäisyyden."""
 
