@@ -1,3 +1,5 @@
+from colorama import Fore
+
 KOMENNOT = {
   "1:": "korjaa sana tai lause",
   "2:": "laske editointietäisyys",
@@ -26,7 +28,7 @@ class Ohjelma():
 
     while True:
       self._tulosta_ohje()
-      komento = self._io.lue("komento: ")
+      komento = self._io.lue("> ")
 
       if komento == "x":
         break
@@ -40,13 +42,15 @@ class Ohjelma():
   def _tulosta_ohje(self):
     """Tulostaa käyttöohjeet."""
 
+    self._io.tulosta(26*"=")
     for komento, kuvaus in KOMENNOT.items():
       print(komento, kuvaus)
+    self._io.tulosta(26*"=")
 
   def _korjaa_lause(self):
     """Korjaa syötteen kirjoitusvirheet."""
 
-    self._io.tulosta("Syötä sana tai lause (tyhjä lopettaa)")
+    self._io.tulosta("Syötä sana tai lause (tyhjä lopettaa):")
 
     while True:
       syote = self._io.lue("> ").lower().split()
@@ -54,18 +58,35 @@ class Ohjelma():
         break
       korjattu_lause = self._service.korjaa_lause(syote)
 
-      self._io.tulosta(f"==> {self._service.muotoile_tulostus(korjattu_lause)}")
+      self._io.tulosta(f"==> {self._muotoile_tulostus(korjattu_lause)}")
   
   def _laske_etaisyys(self):
     """Laskee annettujen sanojen välisen etäisyyden."""
 
-    sana1 = self._io.lue("1. sana: ")
-    sana2 = self._io.lue("2. sana: ")
+    self._io.tulosta("Syötä sanat (tyhjä lopettaa):")
 
-    self._io.tulosta(f"==> {self._service.laske_etaisyys(sana1, sana2)}")
+    while True:
+      sana1 = self._io.lue("1. sana: ")
+      if not sana1:
+        break
+      sana2 = self._io.lue("2. sana: ")
+      if not sana2:
+        break
+
+      self._io.tulosta(f"==> {self._service.laske_etaisyys(sana1, sana2)}")
 
   def _lisaa_sana(self):
     """Lisää sanan sanakirjaan"""
 
     sana = self._io.lue("sana: ")
     self._service.lisaa_sana(sana)
+
+  def _muotoile_tulostus(self, lista):
+    tulos = ""
+    for sana in lista:
+      if sana[-1] == 0:
+        tulos += f"{sana[0]} "
+      else:
+        tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
+    
+    return tulos

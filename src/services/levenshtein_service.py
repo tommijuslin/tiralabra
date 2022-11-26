@@ -1,5 +1,4 @@
 from operator import itemgetter
-from colorama import Fore
 
 class LevenshteinService:
   """Välittää pyynnöt Levenshtein-luokalle."""
@@ -57,13 +56,3 @@ class LevenshteinService:
     """
 
     return self._levenshtein.etaisyys(sana1, sana2)
-
-  def muotoile_tulostus(self, lista):
-      tulos = ""
-      for sana in lista:
-        if sana[-1] == 0:
-          tulos += f"{sana[0]} "
-        else:
-          tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
-      
-      return tulos

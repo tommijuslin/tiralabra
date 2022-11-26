@@ -8,7 +8,7 @@ from entities.levenshtein import Levenshtein
 def main():
   io = KonsoliIO()
 
-  io.tulosta("Ladataan sanoja sanakirjaan...")
+  io.tulosta("Ladataan sanoja sanakirjaan...\n")
   levenshtein = Levenshtein(alusta_sanakirja())
   service = LevenshteinService(levenshtein)
 

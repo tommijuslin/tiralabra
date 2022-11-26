@@ -52,7 +52,7 @@ class Levenshtein:
       edellinen_rivi, e_edellinen_rivi)
 
     if nykyinen_rivi[-1] <= max_etaisyys and solmu.sana != None:
-        sanat.append((solmu.sana, nykyinen_rivi[-1], solmu.frekvenssi, 1))
+        sanat.append((solmu.sana, nykyinen_rivi[-1], solmu.frekvenssi))
 
     if min(nykyinen_rivi) <= max_etaisyys:
         edellinen_kirjain = kirjain
