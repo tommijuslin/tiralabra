@@ -6,7 +6,7 @@
 
 Siirry virtuaaliympäristöön komennolla `poetry shell` ja suorita komento `pytest src`.
 
-## Testit
+## Yksikkötestit
 
 ### Levenshtein
 
@@ -15,3 +15,7 @@ Editointietäisyyksien laskemiseen käytettävää `Levenshtein`-luokkaa testata
 ### TrieSolmu
 
 Trie-tietorakenteen toteuttavaa `TrieSolmu`-luokkaa testataan lisäämällä siihen sanoja ja tarkistamalla löytyvätkö juuri lisätyt sanat.
+
+## Suorituskykytestit
+
+- Ei vielä testattu
