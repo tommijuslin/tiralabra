@@ -20,6 +20,8 @@ Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 
 ## Käyttöohje
 
+HUOM! Ohjelma tukee vain englantia!
+
 Asenna ensin riippuvuuksien hallintaan käytettävä [Poetry](https://python-poetry.org/docs/)-työkalu.
 
 Kloonaa repo koneellesi ja asenna riippuvuudet komennolla `poetry install`.
