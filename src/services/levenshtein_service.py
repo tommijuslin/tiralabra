@@ -12,7 +12,7 @@ class LevenshteinService:
 
     self._levenshtein = levenshtein
 
-  def korjaa_lause(self, syote):
+  def korjaa(self, syote):
     """Korjaa syötteen kirjoitusvirheet.
 
     Palauttaa:
@@ -22,6 +22,10 @@ class LevenshteinService:
     lause = []
 
     for sana in syote:
+      if self._levenshtein.sanakirja.etsi(sana):
+        lause.append((sana, 0))
+        continue
+
       sanat = (self._levenshtein.etsi(sana))
       # Järjestää sanat 1. etäisyyden mukaan ja 2. frekvenssin mukaan
       sanat.sort(key=itemgetter(2),reverse=True)
@@ -44,7 +48,7 @@ class LevenshteinService:
 
     self._levenshtein.sanakirja.lisaa(sana)
 
-  def laske_etaisyys(self, sana1, sana2):
+  def etaisyys(self, sana1, sana2):
     """Laskee sanaparin välisen editointietäisyyden
 
     Parametrit:

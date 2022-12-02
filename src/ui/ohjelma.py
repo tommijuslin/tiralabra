@@ -12,7 +12,7 @@ class Ohjelma():
 
   def __init__(self, io, service):
     """Luokan konstruktori.
-    
+
     Parametrit:
       io: lukemiseen ja tulostamiseen käytettävä apuluokka
       service: editointietäisyyksien laskemiseen käytettävä luokka
@@ -56,7 +56,7 @@ class Ohjelma():
       syote = self._io.lue("> ").lower().split()
       if not syote:
         break
-      korjattu_lause = self._service.korjaa_lause(syote)
+      korjattu_lause = self._service.korjaa(syote)
 
       self._io.tulosta(f"==> {self._muotoile_tulostus(korjattu_lause)}")
 
@@ -73,7 +73,7 @@ class Ohjelma():
       if not sana2:
         break
 
-      self._io.tulosta(f"==> {self._service.laske_etaisyys(sana1, sana2)}")
+      self._io.tulosta(f"==> {self._service.etaisyys(sana1, sana2)}")
 
   def _lisaa_sana(self):
     """Lisää sanan sanakirjaan"""
@@ -88,5 +88,5 @@ class Ohjelma():
         tulos += f"{sana[0]} "
       else:
         tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
-    
+
     return tulos

@@ -13,23 +13,23 @@ class TestLevenshteinService(unittest.TestCase):
     self.service = LevenshteinService(levenshtein)
 
   def test_etaisyys_nolla_kun_sanat_samoja(self):
-    etaisyys = self.service.laske_etaisyys("samasana", "samasana")
+    etaisyys = self.service.etaisyys("samasana", "samasana")
 
     self.assertEqual(etaisyys, 0)
 
   def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksia_yksi(self):
-    etaisyys = self.service.laske_etaisyys("tyop", "typo")
+    etaisyys = self.service.etaisyys("tyop", "typo")
 
     self.assertEqual(etaisyys, 1)
 
   def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksia_kolme(self):
-    etaisyys = self.service.laske_etaisyys("saturday", "sunday")
+    etaisyys = self.service.etaisyys("saturday", "sunday")
 
     self.assertEqual(etaisyys, 3)
 
   def test_korjaa_lause_palauttaa_korjatun_lauseen(self):
     lause = ["fix","tehse","typops","pleaee"]
-    korjattu_lause = self.service.korjaa_lause(lause)
+    korjattu_lause = self.service.korjaa(lause)
 
     self.assertEqual(korjattu_lause, [("fix", 0), ("these", 1), ("typos", 1), ("please", 1)])
 
