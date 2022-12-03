@@ -1,21 +1,21 @@
 class Levenshtein:
-  """Luokka kahden sanan välisen etäisyyden laskemiseen ilman siirtoja."""
+  """Luokka kahden sanan välisen etäisyyden laskemiseen"""
 
   def __init__(self, sanakirja):
     """Luokan konstruktori.
 
     Parametrit:
-      sanakirja: sanat, joihin käyttäjän syöttämiä sanoja verrataan.
+      sanakirja: sanat, joihin käyttäjän syöttämiä sanoja verrataan
     """
 
     self.sanakirja = sanakirja
 
   def etsi(self, sana, max_etaisyys=2):
     """Etsii sanakirjasta sanat, joiden etäisyys annettuun sanaan
-       on enintään annettu maksimietäisyys.
+       on enintään annettu maksimietäisyys
 
     Parametrit:
-      sana: etsittävä sana
+      sana: sana, jolle korjausvaihtoehtoja etsitään
       max_etaisyys: sanojen maksimietäisyys etsittävästä sanasta
 
     Palauttaa:
@@ -35,16 +35,16 @@ class Levenshtein:
 
   def _etsi_rekursiivisesti(self, solmu, kirjain, edellinen_kirjain, sana,
     edellinen_rivi, e_edellinen_rivi, sanat, max_etaisyys):
-    """Sanojen etsimiseen käytettävä apufunktio.
+    """Sanojen etsimiseen käytettävä apufunktio
 
     Parametrit:
       solmu: trie-solmu, joka kuvaa yksittäistä kirjainta
       kirjain: seuraavaksi tarkasteltava kirjain
       edellinen_kirjain: viimeksi tarkasteltu kirjain
-      sana: etsittävä sana
+      sana: sana, jolle korjausvaihtoehtoja etsitään
       edellinen_rivi: Levenshtein-matriisin edellinen rivi
       e_edellinen_rivi: Levenshtein-matriisin edellisestä edellinen rivi
-      sanat: löydettyjen sanojen lista
+      sanat: lista mahdollisista korjausvaihtoehdoista
       max_etaisyys: sanojen maksimietäisyys etsittävästä sanasta
     """
 
@@ -61,7 +61,7 @@ class Levenshtein:
           nykyinen_rivi, edellinen_rivi, sanat, max_etaisyys)
 
   def _laske_etaisyys(self, sana, kirjain, edellinen_kirjain, edellinen_rivi, e_edellinen_rivi):
-    """Laskee Levenshtein-matriisin yhden rivin.
+    """Laskee Levenshtein-matriisin yhden rivin
 
     Parametrit:
       sana: vertailtava sana
@@ -95,7 +95,7 @@ class Levenshtein:
     return nykyinen_rivi
 
   def etaisyys(self, sana1, sana2):
-    """Palauttaa sanojen välisen etäisyyden.
+    """Palauttaa sanojen välisen etäisyyden
 
     Parametrit:
       sana1: vertailtava sana

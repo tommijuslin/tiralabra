@@ -1,45 +1,90 @@
 from operator import itemgetter
+from colorama import Fore
+
+VAIHTOEHTOJEN_MAARA = 3
 
 class LevenshteinService:
   """Välittää pyynnöt Levenshtein-luokalle."""
 
-  def __init__(self, levenshtein):
+  def __init__(self, io, levenshtein):
     """Luokan konstruktori.
 
     Parametrit:
       levenshtein: Levenshtein-etäisyyksien laskemiseen käytettävä luokka
     """
 
+    self._io = io
     self._levenshtein = levenshtein
 
-  def korjaa(self, syote):
+  def korjaa(self, lause):
     """Korjaa syötteen kirjoitusvirheet.
+
+    Parametrit:
+      lause: Käyttäjän syöttämä lause
 
     Palauttaa:
       Listan korjatuista sanoista
     """
 
-    lause = []
+    korjattu_lause = []
 
-    for sana in syote:
+    for sana in lause:
+      # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
       if self._levenshtein.sanakirja.etsi(sana):
-        lause.append((sana, 0))
+        korjattu_lause.append((sana, 0))
         continue
 
-      sanat = (self._levenshtein.etsi(sana))
-      # Järjestää sanat 1. etäisyyden mukaan ja 2. frekvenssin mukaan
-      sanat.sort(key=itemgetter(2),reverse=True)
-      sanat.sort(key=itemgetter(1))
+      vaihtoehdot = self.etsi_korjausvaihtoehdot(sana)
 
-      # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
-      if not sanat or sanat[0][0] == sana:
-        lause.append((sana, 0))
+      if not vaihtoehdot:
+        korjattu_lause.append((sana, 0))
       else:
-        lause.append((sanat[0][0], 1))
+        korjattu_sana = self._korjaa_sana(sana, vaihtoehdot)
+        korjattu_lause.append((korjattu_sana[0], korjattu_sana[1]))
 
-    return lause
+    return korjattu_lause
 
-  def lisaa_sana(self, sana):
+  def etsi_korjausvaihtoehdot(self, sana):
+    """Etsii korjausvaihtoehdot annetulle sanalle ja järjestää ne todenäköisyyden mukaan"""
+    vaihtoehdot = (self._levenshtein.etsi(sana))
+    # Järjestää sanat 1. etäisyyden mukaan ja 2. frekvenssin mukaan
+    vaihtoehdot.sort(key=itemgetter(2),reverse=True)
+    vaihtoehdot.sort(key=itemgetter(1))
+
+    return vaihtoehdot
+
+  def _korjaa_sana(self, sana, vaihtoehdot):
+    sanat = iter(vaihtoehdot)
+    self._io.tulosta(f"-> {Fore.RED}{sana}{Fore.RESET} <-")
+    indeksi = 0
+    while True:
+      self.tulosta_vaihtoehdot(sanat)
+      valinta = self._io.lue("> ")
+      if valinta == "x" or indeksi > len(vaihtoehdot):
+        return sana, 0
+      if not valinta:
+        indeksi += VAIHTOEHTOJEN_MAARA
+        continue
+      return vaihtoehdot[int(valinta) + indeksi - 1][0], 1
+
+  def tulosta_vaihtoehdot(self, vaihtoehdot):
+    """Tulostaa korjausvaihtoehdot
+    Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
+    """
+
+    maara = 1
+    while maara <= VAIHTOEHTOJEN_MAARA:
+      try:
+        self._io.tulosta(f"{maara}: {next(vaihtoehdot)[0]}")
+      except StopIteration:
+        self._io.tulosta(f"{Fore.RED}Ei enempää vaihtoehtoja{Fore.RESET}")
+        break
+      maara += 1
+    self._io.tulosta("(x: lopeta etsiminen)")
+    if maara == VAIHTOEHTOJEN_MAARA + 1:
+      self._io.tulosta("(tyhjä: lisää vaihtoehtoja)")
+
+  def lisaa(self, sana):
     """Lisää sanan sanakirjaan
 
     Parametrit:
