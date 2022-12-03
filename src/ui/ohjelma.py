@@ -1,3 +1,4 @@
+import re
 from colorama import Fore
 
 KOMENNOT = {
@@ -50,11 +51,10 @@ class Ohjelma():
     self._io.tulosta("Syötä sana tai lause (tyhjä lopettaa):")
 
     while True:
-      syote = self._io.lue("> ").lower().split()
+      syote = re.findall(r"\w+|[^\w\s]", self._io.lue("> ").lower())
       if not syote:
         break
       korjattu_lause = self._service.korjaa(syote)
-
       self._io.tulosta(f"==> {self._muotoile_tulostus(korjattu_lause)}")
 
   def _lisaa_sana(self):
@@ -71,4 +71,5 @@ class Ohjelma():
       else:
         tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
 
+    tulos = re.sub(r' (?=[.?!,])', '', tulos)
     return tulos

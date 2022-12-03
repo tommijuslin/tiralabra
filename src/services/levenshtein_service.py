@@ -30,7 +30,7 @@ class LevenshteinService:
 
     for sana in lause:
       # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
-      if self._levenshtein.sanakirja.etsi(sana):
+      if not sana.isalpha() or self._levenshtein.sanakirja.etsi(sana):
         korjattu_lause.append((sana, 0))
         continue
 
@@ -45,7 +45,7 @@ class LevenshteinService:
     return korjattu_lause
 
   def etsi_korjausvaihtoehdot(self, sana):
-    """Etsii korjausvaihtoehdot annetulle sanalle ja järjestää ne todenäköisyyden mukaan"""
+    """Etsii korjausvaihtoehdot annetulle sanalle ja järjestää ne todennäköisyyden mukaan"""
     vaihtoehdot = (self._levenshtein.etsi(sana))
     # Järjestää sanat 1. etäisyyden mukaan ja 2. frekvenssin mukaan
     vaihtoehdot.sort(key=itemgetter(2),reverse=True)
@@ -56,6 +56,7 @@ class LevenshteinService:
   def _korjaa_sana(self, sana, vaihtoehdot):
     sanat = iter(vaihtoehdot)
     self._io.tulosta(f"-> {Fore.RED}{sana}{Fore.RESET} <-")
+
     indeksi = 0
     while True:
       self.tulosta_vaihtoehdot(sanat)
@@ -65,6 +66,7 @@ class LevenshteinService:
       if not valinta:
         indeksi += VAIHTOEHTOJEN_MAARA
         continue
+
       return vaihtoehdot[int(valinta) + indeksi - 1][0], 1
 
   def tulosta_vaihtoehdot(self, vaihtoehdot):
