@@ -14,4 +14,4 @@ Testausdokumentin kirjoittaminen askarruttaa aika paljon, enkä oikein tiedä mi
 
 ## Seuraavan viikon suunnitelma
 
-Haluan kirjoittaa testausdokumenttiin jotain järkevää. Graafinen käyttöliittymä olisi edelleen siistimpi, mutta olen tyytyväinen tällä viikolla tekemääni tekstikäyttöliittymään.
+Haluan kirjoittaa testausdokumenttiin jotain järkevää. Graafinen käyttöliittymä olisi edelleen siistimpi, mutta olen tyytyväinen tällä viikolla tekemääni tekstikäyttöliittymään. Olisi myös kiva jos esim. välimerkit eivät rikkoisi ohjelmaa.
