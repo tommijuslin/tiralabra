@@ -10,4 +10,4 @@ Yritin myös keksiä ratkaisuja siihen, miten käyttäjä voisi valita korjausva
 
 ## Seuraavan viikon suunnitelma
 
-Haluan saada kirjoitettua testausdokumenttiin jotain järkevää. Itse ohjelman osalta haluaisin antaa käyttäjälle mahdollisuuden vaikuttaa ohjelman tekemiin korjauksiin. Todennäköisesti teen tästä ensin tekstiversion ja jos se toimii hyvin, niin käytän loput ajasta graafisen käyttöliittymän suunnitteluun.
+Haluan kirjoittaa testausdokumenttiin jotain järkevää. Itse ohjelman osalta haluaisin antaa käyttäjälle mahdollisuuden vaikuttaa ohjelman tekemiin korjauksiin. Todennäköisesti teen tästä ensin tekstiversion ja jos se toimii hyvin, niin käytän loput ajasta graafisen käyttöliittymän suunnitteluun.
