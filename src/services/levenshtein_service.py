@@ -72,16 +72,16 @@ class LevenshteinService:
     Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
     """
 
-    maara = 1
-    while maara <= VAIHTOEHTOJEN_MAARA:
+    indeksi = 1
+    while indeksi <= VAIHTOEHTOJEN_MAARA:
       try:
-        self._io.tulosta(f"{maara}: {next(vaihtoehdot)[0]}")
+        self._io.tulosta(f"{indeksi}: {next(vaihtoehdot)[0]}")
       except StopIteration:
         self._io.tulosta(f"{Fore.RED}Ei enempää vaihtoehtoja{Fore.RESET}")
         break
-      maara += 1
+      indeksi += 1
     self._io.tulosta("(x: lopeta etsiminen)")
-    if maara == VAIHTOEHTOJEN_MAARA + 1:
+    if indeksi == VAIHTOEHTOJEN_MAARA + 1:
       self._io.tulosta("(tyhjä: lisää vaihtoehtoja)")
 
   def lisaa(self, sana):
