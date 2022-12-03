@@ -1,13 +1,17 @@
 # Viikkoraportti 5
 
-:watch: 4 tuntia
+:watch: 10 tuntia (sis. vertaisarviointiin kuluneen ajan)
 
 ## Mitä tein tällä viikolla?
 
-Kaikki tällä viikolla käyttämäni neljä tuntia meni vertaisarviointiin. Omassa ohjelmassani ei ole tapahtunut edistystä. Testausdokumentin kirjoittaminen askarruttaa aika paljon, enkä oikein tiedä minkälaisia suorituskykytestejä yms voisin tehdä.
+Vertaisarviointiin meni noin 3-4 tuntia.
 
-Yritin myös keksiä ratkaisuja siihen, miten käyttäjä voisi valita korjausvaihtoehdoista sopivimman, mutta tekstikäyttöliittymä on aika kankea siihen tarkoitukseen. Ehkä yksinkertaisin tapa olisi vain listata väärinkirjoitettujen sanojen todennäköisimmät korjausvaihtoehdot (top 5?) ja antaa käyttäjän valita listasta haluamansa sana. Toinen vaihtoehto on tehdä graafinen käyttöliittymä tkinterillä. Siinä taas huolena on se, ettei tkinter ole ennestään tuttu ja pelkään kuluttavani paljon aikaa johonkin sellaiseen, mitä en loppujen lopuksi saa edes toimimaan.
+Muu aika meni lähinnä käyttöliittymän kanssa kikkailuun. Käyttäjä voi nyt valita tarjotuista korjausvaihtoehdoista sopivimman.
+
+## Ongelmia
+
+Testausdokumentin kirjoittaminen askarruttaa aika paljon, enkä oikein tiedä minkälaisia suorituskykytestejä yms voisin tehdä.
 
 ## Seuraavan viikon suunnitelma
 
-Haluan kirjoittaa testausdokumenttiin jotain järkevää. Itse ohjelman osalta haluaisin antaa käyttäjälle mahdollisuuden vaikuttaa ohjelman tekemiin korjauksiin. Todennäköisesti teen tästä ensin tekstiversion ja jos se toimii hyvin, niin käytän loput ajasta graafisen käyttöliittymän suunnitteluun.
+Haluan kirjoittaa testausdokumenttiin jotain järkevää. Graafinen käyttöliittymä olisi edelleen siistimpi, mutta olen tyytyväinen tällä viikolla tekemääni tekstikäyttöliittymään.
