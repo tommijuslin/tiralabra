@@ -29,15 +29,16 @@ class LevenshteinService:
     korjattu_lause = []
 
     for sana in lause:
-      # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
-      if not sana.isalpha() or self._levenshtein.sanakirja.etsi(sana):
-        korjattu_lause.append((sana, 0))
+      on_sanakirjassa = self._levenshtein.sanakirja.etsi(sana)
+      if not sana.isalpha() or on_sanakirjassa[0] and on_sanakirjassa[1] > 50:
+        # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
+        korjattu_lause.append((sana, False))
         continue
 
       vaihtoehdot = self.etsi_korjausvaihtoehdot(sana)
 
       if not vaihtoehdot:
-        korjattu_lause.append((sana, 0))
+        korjattu_lause.append((sana, False))
       else:
         korjattu_sana = self._korjaa_sana(sana, vaihtoehdot)
         korjattu_lause.append((korjattu_sana[0], korjattu_sana[1]))
@@ -62,7 +63,7 @@ class LevenshteinService:
       self.tulosta_vaihtoehdot(sanat)
       valinta = self._io.lue("> ")
       if valinta == "x" or indeksi > len(vaihtoehdot):
-        return sana, 0
+        return sana, False
       if not valinta:
         indeksi += VAIHTOEHTOJEN_MAARA
         continue

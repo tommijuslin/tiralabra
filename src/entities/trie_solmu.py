@@ -44,7 +44,11 @@ class TrieSolmu:
 
     for kirjain in sana:
       if kirjain not in solmu.lapset:
-        return False
+        return False, 0
       solmu = solmu.lapset[kirjain]
 
-    return solmu.sana is not None
+    tulos = solmu.sana is not None
+    if tulos:
+      return True, solmu.frekvenssi
+
+    return False, 0

@@ -1,6 +1,6 @@
 from entities.trie_solmu import TrieSolmu
 
-SANAKIRJA = "./words.txt"
+SANAKIRJA = "./sanasto.txt"
 
 def alusta_sanakirja():
   sanakirja = TrieSolmu()

@@ -32,7 +32,7 @@ class Ohjelma():
 
       if komento == "x":
         break
-      elif komento == "1":
+      if komento == "1":
         self._korjaa_lause()
       elif komento == "2":
         self._lisaa_sana()
@@ -71,5 +71,7 @@ class Ohjelma():
       else:
         tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
 
+    # välimerkkien kanssa kikkailua
     tulos = re.sub(r' (?=[.?!,])', '', tulos)
+
     return tulos
