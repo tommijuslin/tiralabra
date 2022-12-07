@@ -14,10 +14,10 @@ class TestTrieSolmu(unittest.TestCase):
   def test_sanaa_jota_ei_ole_lisatty_ei_loydy(self):
     sana = self.sanakirja.etsi("sana")
 
-    self.assertFalse(sana)
+    self.assertFalse(sana[0])
 
   def test_sanaa_ei_loydy_vaikka_sama_alkuosa(self):
     self.sanakirja.lisaa("sanakirja")
     sana = self.sanakirja.etsi("sana")
 
-    self.assertFalse(sana)
+    self.assertFalse(sana[0])

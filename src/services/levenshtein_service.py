@@ -30,7 +30,7 @@ class LevenshteinService:
 
     for sana in lause:
       on_sanakirjassa = self._levenshtein.sanakirja.etsi(sana)
-      if not sana.isalpha() or on_sanakirjassa[0] and on_sanakirjassa[1] > 50:
+      if not sana.isalpha() or on_sanakirjassa[0]:
         # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
         korjattu_lause.append((sana, False))
         continue
