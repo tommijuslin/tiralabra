@@ -11,7 +11,7 @@
 
 Ohjelma toimii pääpiirteittäin seuraavasti:
 
-Käyttäjä syöttää ohjelmalle lauseen. Ohjelma tarkistaa jokaisen sanan kohdalla, löytyykö se sellaisenaan sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista. Korjausvaihtoehtojen valinta perustuu niin sanottuun editointietäisyyteen, joka ilmaisee kuinka monta eri operaatiota sanalle on tehtävä, että siitä saadaan jokin eri sana.
+Käyttäjä syöttää ohjelmalle lauseen. Ohjelma tarkistaa jokaisen sanan kohdalla, löytyykö se sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista. Korjausvaihtoehtojen valinta perustuu niin sanottuun editointietäisyyteen, joka ilmaisee kuinka monta eri operaatiota sanalle on tehtävä, että siitä saadaan jokin eri sana.
 
 Käytössä on neljä eri operaatiota:
 - poisto: morn**n**ing ==> morning
