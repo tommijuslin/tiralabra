@@ -1,8 +1,8 @@
 from ui.ohjelma import Ohjelma
 from ui.konsoli_io import KonsoliIO
 from sanakirja import alusta_sanakirja
-from services.levenshtein_service import LevenshteinService
 from entities.levenshtein import Levenshtein
+from entities.lauseenkorjaaja import Lauseenkorjaaja
 
 
 def main():
@@ -10,9 +10,9 @@ def main():
 
   io.tulosta("Ladataan sanoja sanakirjaan...")
   levenshtein = Levenshtein(alusta_sanakirja())
-  service = LevenshteinService(io, levenshtein)
+  lauseenkorjaaja = Lauseenkorjaaja(levenshtein, io)
 
-  ohjelma = Ohjelma(io, service)
+  ohjelma = Ohjelma(io, levenshtein, lauseenkorjaaja)
   ohjelma.kaynnista()
 
 if __name__ == "__main__":

@@ -3,27 +3,28 @@ from colorama import Fore
 
 VAIHTOEHTOJEN_MAARA = 3
 
-class LevenshteinService:
-  """Välittää pyynnöt Levenshtein-luokalle."""
+class Lauseenkorjaaja:
+  """Lauseiden korjaamiseen käytettävä luokka"""
 
-  def __init__(self, io, levenshtein):
-    """Luokan konstruktori.
+  def __init__(self, levenshtein, io):
+    """Luokan konstruktori
 
     Parametrit:
-      levenshtein: Levenshtein-etäisyyksien laskemiseen käytettävä luokka
+      levenshtein: etäisyyksien laskemiseen käytettävä luokka
+      io: lukemiseen ja tulostamiseen käytettävä apuluokka
     """
 
-    self._io = io
     self._levenshtein = levenshtein
+    self._io = io
 
   def korjaa(self, lause):
-    """Korjaa syötteen kirjoitusvirheet.
+    """Korjaa kirjoitusvirheet annetusta lauseesta
 
     Parametrit:
-      lause: Käyttäjän syöttämä lause
+      lause: korjattava lause
 
     Palauttaa:
-      Listan korjatuista sanoista
+      korjatun lauseen
     """
 
     korjattu_lause = []
@@ -56,13 +57,21 @@ class LevenshteinService:
     return vaihtoehdot
 
   def _korjaa_sana(self, sana, vaihtoehdot):
+    """Korjaa yksittäisen sanan käyttäjän valintojen perusteella
+
+    Parametrit:
+      sana: korjattava sana
+      vaihtoehdot: lista korjausvaihtoehtoista
+    """
+
     sanat = iter(vaihtoehdot)
     self._io.tulosta(f"-> {Fore.RED}{sana}{Fore.RESET} <-")
 
     indeksi = 0
     nayta_lisaa = True
     while True:
-      self._tulosta_vaihtoehdot(sanat, nayta_lisaa)
+      if nayta_lisaa:
+        self._tulosta_vaihtoehdot(sanat)
       valinta = self._io.lue("> ")
       if valinta == "q" or indeksi > len(vaihtoehdot):
         return sana, False
@@ -70,20 +79,20 @@ class LevenshteinService:
         indeksi += VAIHTOEHTOJEN_MAARA
         nayta_lisaa = True
         continue
-      if valinta.isalpha() or int(valinta) > VAIHTOEHTOJEN_MAARA:
+      if valinta.isalpha() or int(valinta) > VAIHTOEHTOJEN_MAARA or int(valinta) <= 0:
         self._io.tulosta("Virheellinen komento")
         nayta_lisaa = False
         continue
 
       return vaihtoehdot[int(valinta) + indeksi - 1][0], 1
 
-  def _tulosta_vaihtoehdot(self, vaihtoehdot, nayta_lisaa):
+  def _tulosta_vaihtoehdot(self, vaihtoehdot):
     """Tulostaa korjausvaihtoehdot
        Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
-    """
 
-    if not nayta_lisaa:
-      return
+    Parametrit:
+      vaihtoehdot: listattavat korjausvaihtoehdot
+    """
 
     indeksi = 1
     while indeksi <= VAIHTOEHTOJEN_MAARA:
@@ -96,25 +105,3 @@ class LevenshteinService:
     self._io.tulosta("(q: lopeta etsiminen)")
     if indeksi == VAIHTOEHTOJEN_MAARA + 1:
       self._io.tulosta("(tyhjä: lisää vaihtoehtoja)")
-
-  def lisaa(self, sana):
-    """Lisää sanan sanakirjaan
-
-    Parametrit:
-      sana: lisättävä sana
-    """
-
-    self._levenshtein.sanakirja.lisaa(sana)
-
-  def etaisyys(self, sana1, sana2):
-    """Laskee sanaparin välisen editointietäisyyden
-
-    Parametrit:
-      sana1: vertailtava sana
-      sana2: vertailtava sana
-
-    Palauttaa:
-      sanaparin välisen editointietäisyyden
-    """
-
-    return self._levenshtein.etaisyys(sana1, sana2)

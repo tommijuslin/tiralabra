@@ -10,16 +10,17 @@ KOMENNOT = {
 class Ohjelma():
   """Pääohjelma."""
 
-  def __init__(self, io, service):
+  def __init__(self, io, levenshtein, lauseenkorjaaja):
     """Luokan konstruktori.
 
     Parametrit:
       io: lukemiseen ja tulostamiseen käytettävä apuluokka
-      service: editointietäisyyksien laskemiseen käytettävä luokka
+      lauseenkorjaaja: lauseen korjaamiseen käytettävä luokka
     """
 
     self._io = io
-    self._service = service
+    self._levenshtein = levenshtein
+    self._lauseenkorjaaja = lauseenkorjaaja
 
   def kaynnista(self):
     """Ohjelman pääsilmukka.
@@ -51,17 +52,18 @@ class Ohjelma():
     self._io.tulosta("Syötä sana tai lause (tyhjä lopettaa):")
 
     while True:
-      syote = re.findall(r"\w+|[^\w\s]", self._io.lue("> ").lower())
-      if not syote:
+      lause = re.findall(r"\w+|[^\w\s]", self._io.lue("> ").lower())
+      print(lause)
+      if not lause:
         break
-      korjattu_lause = self._service.korjaa(syote)
+      korjattu_lause = self._lauseenkorjaaja.korjaa(lause)
       self._io.tulosta(f"==> {self._muotoile_tulostus(korjattu_lause)}")
 
   def _lisaa_sana(self):
     """Lisää sanan sanakirjaan"""
 
     sana = self._io.lue("sana: ")
-    self._service.lisaa(sana)
+    self._levenshtein.lisaa(sana)
 
   def _muotoile_tulostus(self, lause):
     tulos = ""
