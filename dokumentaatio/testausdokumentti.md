@@ -16,6 +16,12 @@ Editointietäisyyksien laskemiseen käytettävää `Levenshtein`-luokkaa testata
 
 Trie-tietorakenteen toteuttavaa `TrieSolmu`-luokkaa testataan lisäämällä siihen sanoja ja tarkistamalla löytyvätkö juuri lisätyt sanat.
 
+## Integraatiotestit
+
+### LevenshteinService
+
+`LevenshteinService` toimii rajapintana `Levenshtein`-luokalle. Testeissä keskitytään erityisesti syötetyn lauseen korjauksen oikeellisuuteen. Luokan palauttama lista korjatuista sanoista sisältää tiedon siitä, onko sanoja muokattu, ja tähän on myös käyttäjällä mahdollisuus vaikuttaa: käyttäjä voi esimerkiksi päättää olla korjaamatta sanaa, jolloin ohjelma ei merkkaa sanaa muokatuksi. Testit varmistavat, että ohjelma toimii oikein erilaisissa tilanteissa käyttäjän tekemien valintojen mukaan.
+
 ## Suorituskykytestit
 
 - Ei vielä testattu
