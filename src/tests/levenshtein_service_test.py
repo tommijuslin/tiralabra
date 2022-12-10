@@ -56,7 +56,7 @@ class TestLevenshteinService(unittest.TestCase):
     )
 
   def test_korjaa_palauttaa_lauseen_oikein_jos_kayttaja_ei_korjaa_sanoja(self):
-    io = StubIO(["x", "x", "x"])
+    io = StubIO(["q", "q", "q"])
     self.service = LevenshteinService(io, self.levenshtein)
     lause = ["fix","tehse","typops","pleaee"]
     korjattu_lause = self.service.korjaa(lause)
