@@ -4,6 +4,7 @@
 
 - Kirjoitin kattavammat testit etäisyyksien laskemiselle.
 - Ohjelma toimii nyt paremmin, jos syöte sisältää välimerkkejä: sanoja ei enää esimerkiksi merkata virheellisiksi, jos ne sisältävät välimerkkejä.
+- Yksinkertainen validointi syötteelle, kun käyttäjä valitsee listasta haluamansa sanan
 - Dokumentointia
 
 ## Mitä teen ensi viikolla?
