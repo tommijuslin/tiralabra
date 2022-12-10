@@ -1,8 +1,10 @@
 # Viikkoraportti 6
 
-:watch: 1 tunti
+:watch: 2 tuntia
 
-Kirjoitin kattavammat testit etäisyyksien laskemiselle. Lisäksi ohjelma toimii nyt paremmin, jos syöte sisältää välimerkkejä: sanoja ei enää esimerkiksi merkata virheellisiksi, jos ne sisältävät välimerkkejä.
+- Kirjoitin kattavammat testit etäisyyksien laskemiselle.
+- Ohjelma toimii nyt paremmin, jos syöte sisältää välimerkkejä: sanoja ei enää esimerkiksi merkata virheellisiksi, jos ne sisältävät välimerkkejä.
+- Dokumentointia
 
 ## Mitä teen ensi viikolla?
 
