@@ -15,10 +15,31 @@ class TestLevenshtein(unittest.TestCase):
 
     self.assertEqual(etaisyys, 0)
 
-  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksia_yksi(self):
-    etaisyys = self.levenshtein.etaisyys("typi", "typo")
+  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksena_yksi_poisto(self):
+    etaisyys = self.levenshtein.etaisyys("mornning", "morning")
 
     self.assertEqual(etaisyys, 1)
+
+  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksena_yksi_lisays(self):
+    etaisyys = self.levenshtein.etaisyys("mornin", "morning")
+
+    self.assertEqual(etaisyys, 1)
+
+  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksena_yksi_vaihto(self):
+    etaisyys = self.levenshtein.etaisyys("morming", "morning")
+
+    self.assertEqual(etaisyys, 1)
+
+  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksena_yksi_siirto(self):
+    etaisyys = self.levenshtein.etaisyys("omrning", "morning")
+
+    self.assertEqual(etaisyys, 1)
+
+
+  def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksia_kaksi(self):
+    etaisyys = self.levenshtein.etaisyys("mornnin", "morning")
+
+    self.assertEqual(etaisyys, 2)
 
   def test_etaisyys_laskee_etaisyyden_oikein_kun_muutoksia_kolme(self):
     etaisyys = self.levenshtein.etaisyys("saturday", "sunday")
