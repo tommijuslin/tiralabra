@@ -73,7 +73,7 @@ class TestLevenshteinService(unittest.TestCase):
       [("juustopuuro", False), ("painovoima", False), ("pumputtaja", False)]
     )
 
-  def test_korjaa_palauttaa_lauseen(self):
+  def test_korjaa_palauttaa_lauseen_jos_ei_enempaa_vaihtoehtoja(self):
     io = StubIO(["", ""])
     self.service = LevenshteinService(io, self.levenshtein)
     lause = ["pleaee"]
