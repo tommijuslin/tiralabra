@@ -35,7 +35,7 @@ class LevenshteinService:
         korjattu_lause.append((sana, False))
         continue
 
-      vaihtoehdot = self.etsi_korjausvaihtoehdot(sana)
+      vaihtoehdot = self._etsi_korjausvaihtoehdot(sana)
 
       if not vaihtoehdot:
         korjattu_lause.append((sana, False))
@@ -45,7 +45,7 @@ class LevenshteinService:
 
     return korjattu_lause
 
-  def etsi_korjausvaihtoehdot(self, sana):
+  def _etsi_korjausvaihtoehdot(self, sana):
     """Etsii korjausvaihtoehdot annetulle sanalle ja järjestää ne todennäköisyyden mukaan"""
 
     vaihtoehdot = (self._levenshtein.etsi(sana))
@@ -60,21 +60,30 @@ class LevenshteinService:
     self._io.tulosta(f"-> {Fore.RED}{sana}{Fore.RESET} <-")
 
     indeksi = 0
+    nayta_lisaa = True
     while True:
-      self.tulosta_vaihtoehdot(sanat)
+      self._tulosta_vaihtoehdot(sanat, nayta_lisaa)
       valinta = self._io.lue("> ")
       if valinta == "q" or indeksi > len(vaihtoehdot):
         return sana, False
       if not valinta:
         indeksi += VAIHTOEHTOJEN_MAARA
+        nayta_lisaa = True
+        continue
+      if valinta.isalpha() or int(valinta) > VAIHTOEHTOJEN_MAARA:
+        self._io.tulosta("Virheellinen komento")
+        nayta_lisaa = False
         continue
 
       return vaihtoehdot[int(valinta) + indeksi - 1][0], 1
 
-  def tulosta_vaihtoehdot(self, vaihtoehdot):
+  def _tulosta_vaihtoehdot(self, vaihtoehdot, nayta_lisaa):
     """Tulostaa korjausvaihtoehdot
        Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
     """
+
+    if not nayta_lisaa:
+      return
 
     indeksi = 1
     while indeksi <= VAIHTOEHTOJEN_MAARA:
