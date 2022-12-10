@@ -6,6 +6,8 @@ Kirjoitin kattavammat testit etäisyyksien laskemiselle. Lisäksi ohjelma toimii
 
 ## Mitä teen ensi viikolla?
 
-Olen itse ohjelmaan tällä hetkellä tyytyväinen, enkä enää juuri keksi mitään parannettavaa. Käyttäjän lisäämät sanat pitäisi vielä kirjoittaa (erilliseen?) tiedostoon, sillä tällä hetkellä ne tallennetaan tietorakenteeseen vain suorituksen ajaksi.
+Olen itse ohjelmaan tällä hetkellä tyytyväinen, mutta pari asiaa pitäisi vielä korjata.
+- Käyttäjän lisäämät sanat pitäisi kirjoittaa (erilliseen?) tiedostoon, sillä tällä hetkellä ne tallennetaan tietorakenteeseen vain suorituksen ajaksi.
+- `LevenshteinService`-luokasta tuli erilainen kun alunperin oli tarkoituksena. Luokka sisältää nyt myös jonkin verran käyttöliittymäkoodia, mistä en pidä.
 
-Ainoa jäljellä oleva asia on saada dokumentointi kuntoon.
+Dokumentointi pitäisi myös saada kuntoon.
