@@ -4,7 +4,7 @@ from colorama import Fore
 KOMENNOT = {
   "1:": "korjaa sana tai lause",
   "2:": "lisää sana",
-  "x:": "lopeta",
+  "q:": "lopeta",
 }
 
 class Ohjelma():
@@ -30,7 +30,7 @@ class Ohjelma():
       self._tulosta_ohje()
       komento = self._io.lue("> ")
 
-      if komento == "x":
+      if komento == "q":
         break
       if komento == "1":
         self._korjaa_lause()

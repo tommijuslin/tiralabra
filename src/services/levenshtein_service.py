@@ -31,7 +31,7 @@ class LevenshteinService:
     for sana in lause:
       on_sanakirjassa = self._levenshtein.sanakirja.etsi(sana)
       if not sana.isalpha() or on_sanakirjassa[0]:
-        # Tuplen toinen alkio merkkaa sanan muokatuksi. 1 = muokattu
+        # Tuplen toinen alkio merkkaa sanan muokatuksi.
         korjattu_lause.append((sana, False))
         continue
 
@@ -47,6 +47,7 @@ class LevenshteinService:
 
   def etsi_korjausvaihtoehdot(self, sana):
     """Etsii korjausvaihtoehdot annetulle sanalle ja järjestää ne todennäköisyyden mukaan"""
+
     vaihtoehdot = (self._levenshtein.etsi(sana))
     # Järjestää sanat 1. etäisyyden mukaan ja 2. frekvenssin mukaan
     vaihtoehdot.sort(key=itemgetter(2),reverse=True)
@@ -62,7 +63,7 @@ class LevenshteinService:
     while True:
       self.tulosta_vaihtoehdot(sanat)
       valinta = self._io.lue("> ")
-      if valinta == "x" or indeksi > len(vaihtoehdot):
+      if valinta == "q" or indeksi > len(vaihtoehdot):
         return sana, False
       if not valinta:
         indeksi += VAIHTOEHTOJEN_MAARA
@@ -72,7 +73,7 @@ class LevenshteinService:
 
   def tulosta_vaihtoehdot(self, vaihtoehdot):
     """Tulostaa korjausvaihtoehdot
-    Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
+       Kerralla tulostettavien vaihtoehtojen määrän voi vaihtaa VAIHTOEHTOJEN_MAARA-muuttujan avulla
     """
 
     indeksi = 1
@@ -83,7 +84,7 @@ class LevenshteinService:
         self._io.tulosta(f"{Fore.RED}Ei enempää vaihtoehtoja{Fore.RESET}")
         break
       indeksi += 1
-    self._io.tulosta("(x: lopeta etsiminen)")
+    self._io.tulosta("(q: lopeta etsiminen)")
     if indeksi == VAIHTOEHTOJEN_MAARA + 1:
       self._io.tulosta("(tyhjä: lisää vaihtoehtoja)")
 
