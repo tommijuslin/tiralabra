@@ -20,7 +20,7 @@ Trie-tietorakenteen toteuttavaa `TrieSolmu`-luokkaa testataan lisäämällä sii
 
 ### Lauseenkorjaaja
 
-Testeissä keskitytään erityisesti syötetyn lauseen korjauksen oikeellisuuteen. Luokan palauttama lista korjatuista sanoista sisältää tiedon siitä, onko sanoja muokattu, ja tähän on myös käyttäjällä mahdollisuus vaikuttaa: käyttäjä voi esimerkiksi päättää olla korjaamatta sanaa, jolloin ohjelma ei merkkaa sanaa muokatuksi. Testit varmistavat, että ohjelma toimii oikein erilaisissa tilanteissa käyttäjän tekemien valintojen mukaan.
+Testeissä keskitytään erityisesti syötetyn lauseen korjauksen oikeellisuuteen. Luokan `korjaa`-metodin palauttama lista korjatuista sanoista sisältää tiedon siitä, onko sanoja muokattu, ja tähän on myös käyttäjällä mahdollisuus vaikuttaa: käyttäjä voi esimerkiksi päättää olla korjaamatta sanaa, jolloin ohjelma ei merkkaa sanaa muokatuksi. Testit varmistavat, että ohjelma toimii oikein erilaisissa tilanteissa käyttäjän tekemien valintojen mukaan.
 
 ## Suorituskykytestit
 
