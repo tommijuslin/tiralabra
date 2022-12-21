@@ -1,5 +1,6 @@
 import re
 from colorama import Fore
+from sanakirja import kirjoita_lisatyt_sanat_tiedostoon
 
 KOMENNOT = {
     "1:": "korjaa sana tai lause",
@@ -22,6 +23,7 @@ class Ohjelma():
         self._io = io
         self._levenshtein = levenshtein
         self._lauseenkorjaaja = lauseenkorjaaja
+        self._lisatyt_sanat = []
 
     def kaynnista(self):
         """Ohjelman pääsilmukka.
@@ -33,6 +35,8 @@ class Ohjelma():
             komento = self._io.lue("> ")
 
             if komento == "q":
+                if self._lisatyt_sanat:
+                    kirjoita_lisatyt_sanat_tiedostoon(self._lisatyt_sanat)
                 break
             if komento == "1":
                 self._korjaa_lause()
@@ -63,7 +67,13 @@ class Ohjelma():
         """Lisää sanan sanakirjaan"""
 
         sana = self._io.lue("sana: ")
-        self._levenshtein.lisaa(sana)
+        try:
+            self._lisatyt_sanat.append(sana)
+            self._levenshtein.sanakirja.lisaa(sana)
+        except OSError:
+            self._io.tulosta("Sanan lisääminen ei onnistunut")
+        else:
+            self._io.tulosta(f"{Fore.GREEN}{sana}{Fore.RESET} lisätty sanakirjaan")
 
     def _muotoile_tulostus(self, lause):
         tulos = ""
@@ -73,7 +83,6 @@ class Ohjelma():
             else:
                 tulos += f"{Fore.GREEN}{sana[0]}{Fore.RESET} "
 
-        # välimerkkien kanssa kikkailua
         tulos = re.sub(r' (?=[.?!,])', '', tulos)
 
         return tulos

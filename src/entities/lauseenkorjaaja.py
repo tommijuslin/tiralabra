@@ -80,7 +80,7 @@ class Lauseenkorjaaja:
                 indeksi += VAIHTOEHTOJEN_MAARA
                 nayta_lisaa = True
                 continue
-            if valinta.isalpha() or int(valinta) > VAIHTOEHTOJEN_MAARA or int(valinta) <= 0:
+            if not valinta.isdigit() or int(valinta) > VAIHTOEHTOJEN_MAARA or int(valinta) <= 0:
                 self._io.tulosta("Virheellinen komento")
                 nayta_lisaa = False
                 continue
