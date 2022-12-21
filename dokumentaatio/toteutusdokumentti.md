@@ -3,13 +3,13 @@
 ## Ohjelman yleisrakenne
 
 - `Ohjelma`: Ohjelman käyttöliittymä. Tulostaa ohjeet ja ohjaa funktiokutsut eteenpäin käyttäjän valintojen mukaan.
-- `Levenshtein`: Varsinaisen laskennan suorittava luokka. Laskee editointietäisyydet, etsii sanakirjasta sopivia korjausvaihtoehtoja ja palauttaa ne käyttäjälle.
+- `Levenshtein`: Varsinaisen laskennan suorittava luokka. Laskee editointietäisyydet, etsii sanakirjasta sopivia korjausvaihtoehtoja ja palauttaa ne.
 - `Lauseenkorjaaja`: Muodostaa lopullisen korjatun lauseen käyttäjän valintojen perusteella.
 - `TrieSolmu`: Sanakirjan käyttämä Trie-tietorakenne.
 
 ## Ohjelman toiminta
 
-Käyttäjän syöttämä lause annetaan `Lauseenkorjaaja`-luokalle tarkasteltavaksi. Luokan `korjaa`-metodi tarkistaa jokaisen sanan kohdalla, löytyykö se sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `Levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista.
+Käyttäjän syöttämä lause annetaan `Lauseenkorjaaja`-luokalle, joka tarkistaa jokaisen sanan kohdalla, löytyykö se sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `Levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista.
 
 ### Editointietäisyys
 
@@ -41,7 +41,21 @@ Taulukon viimeinen luku ilmaisee lopullisen editointietäisyyden. Listalle lisä
 
 ### Trie-tietorakenne
 
-Sanasto on talletettu puumaiseen trie-tietorakenteeseen
+Sanasto on talletettu puumaiseen trie-tietorakenteeseen, missä jokainen puun solmu vastaa yhtä kirjainta.
+
+<br>
+
+![Trie](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/trie.png)
+
+<br>
+
+Trie-tietorakenne tekee vertailusta tehokkaampaa, sillä esimerkiksi sanat *bat* ja *bats* eroavat toisistaan vain viimeisen kirjaimen kohdalla, jolloin sanan *bats* kohdalla suurin osa laskennasta on tehty jo valmiiksi.
+
+### Lopullinen korjattu lause
+
+`Levenshtein`-luokan palauttamat korjausvaihtoehdot järjestetään ensin sanojen frekvenssien mukaan ja sitten editointietäisyyksien mukaan. Mitä yleisempi sana on ja mitä pienempi sen etäisyys väärinkirjoitetusta sanasta on, sitä todennäköisemmin se on käyttäjän haluama sana.
+
+Käyttäjälle näytetään jokaiselle väärinkirjoitetulle sanalle lista mahdollisista korjausvaihtoehdoista, joista käyttäjä voi valita halumansa sanan. Valitut sanat lisätään lopulliseen lauseeseen ja kaikkien valintojen jälkeen korjattu lause näytetään käyttäjälle.
 
 
 ## Puutteet ja parannusehdotukset
