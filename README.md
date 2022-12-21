@@ -7,6 +7,7 @@ Tietorakenteet ja algoritmit harjoitustyö (periodi II)
 
 ## Dokumentaatio
 
+- [Käyttöohje](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/kayttoohje.md)
 - [Määrittelydokumentti](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/maarittelydokumentti.md)
 - [Testausdokumentti](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/testausdokumentti.md)
 - [Toteutusdokumentti](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)
