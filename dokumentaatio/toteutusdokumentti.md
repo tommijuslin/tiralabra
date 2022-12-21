@@ -41,7 +41,7 @@ Taulukon viimeinen luku ilmaisee lopullisen editointietäisyyden. Listalle lisä
 
 ### Trie-tietorakenne
 
-Sanasto on talletettu puumaiseen trie-tietorakenteeseen, missä jokainen puun solmu vastaa yhtä kirjainta.
+Sanasto on talletettu puumaiseen trie-tietorakenteeseen, missä jokainen puun solmu vastaa yhtä kirjainta. Kirjaimen lisäksi solmuihin on tallennettu myös tieto siitä, päättyykö jokin sana kyseiseen solmuun.
 
 <br>
 
