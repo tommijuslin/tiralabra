@@ -2,7 +2,7 @@
 
 ## Ohjelman yleisrakenne
 
-- `Ohjelma`: Ohjelman käyttöliittymä. Tulostaa ohjeet ja ohjaa funktiokutsut eteenpäin käyttäjän valintojen mukaan.
+- `Ohjelma`: Ohjelman käyttöliittymä.
 - `Levenshtein`: Varsinaisen laskennan suorittava luokka. Laskee editointietäisyydet, etsii sanakirjasta sopivia korjausvaihtoehtoja ja palauttaa ne.
 - `Lauseenkorjaaja`: Muodostaa lopullisen korjatun lauseen käyttäjän valintojen perusteella.
 - `TrieSolmu`: Sanakirjan käyttämä Trie-tietorakenne.
