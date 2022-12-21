@@ -53,7 +53,6 @@ class Ohjelma():
 
     while True:
       lause = re.findall(r"\w+|[^\w\s]", self._io.lue("> ").lower())
-      print(lause)
       if not lause:
         break
       korjattu_lause = self._lauseenkorjaaja.korjaa(lause)
