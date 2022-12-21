@@ -6,14 +6,15 @@ from entities.lauseenkorjaaja import Lauseenkorjaaja
 
 
 def main():
-  io = KonsoliIO()
+    io = KonsoliIO()
 
-  io.tulosta("Ladataan sanoja sanakirjaan...")
-  levenshtein = Levenshtein(alusta_sanakirja())
-  lauseenkorjaaja = Lauseenkorjaaja(levenshtein, io)
+    io.tulosta("Ladataan sanoja sanakirjaan...")
+    levenshtein = Levenshtein(alusta_sanakirja())
+    lauseenkorjaaja = Lauseenkorjaaja(levenshtein, io)
 
-  ohjelma = Ohjelma(io, levenshtein, lauseenkorjaaja)
-  ohjelma.kaynnista()
+    ohjelma = Ohjelma(io, levenshtein, lauseenkorjaaja)
+    ohjelma.kaynnista()
+
 
 if __name__ == "__main__":
-  main()
+    main()
