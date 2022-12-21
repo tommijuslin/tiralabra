@@ -53,7 +53,7 @@ Trie-tietorakenne tekee vertailusta tehokkaampaa, sillä esimerkiksi sanat *bat*
 
 ### Lopullinen korjattu lause
 
-`Levenshtein`-luokan palauttamat korjausvaihtoehdot järjestetään ensin sanojen frekvenssien mukaan ja sitten editointietäisyyksien mukaan. Mitä yleisempi sana on ja mitä pienempi sen etäisyys väärinkirjoitetusta sanasta on, sitä todennäköisemmin se on käyttäjän haluama sana.
+`Levenshtein`-luokan palauttamat korjausvaihtoehdot järjestetään ensin sanojen frekvenssien mukaan ja sitten editointietäisyyksien mukaan. Mitä yleisempi sana on ja mitä pienempi sen etäisyys väärinkirjoitetusta sanasta, sitä todennäköisemmin se on käyttäjän haluama sana.
 
 Käyttäjälle näytetään jokaiselle väärinkirjoitetulle sanalle lista mahdollisista korjausvaihtoehdoista, joista käyttäjä voi valita halumansa sanan. Valitut sanat lisätään lopulliseen lauseeseen ja kaikkien valintojen jälkeen korjattu lause näytetään käyttäjälle.
 
