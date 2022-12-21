@@ -45,7 +45,7 @@ Sanasto on talletettu puumaiseen trie-tietorakenteeseen, missä jokainen puun so
 
 <br>
 
-![Trie](https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/trie.png)
+<img src="https://github.com/tommijuslin/tiralabra/blob/main/dokumentaatio/trie.png" width=50% height=50%>
 
 <br>
 
