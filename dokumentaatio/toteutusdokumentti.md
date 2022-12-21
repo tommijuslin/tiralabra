@@ -4,14 +4,16 @@
 
 - `Ohjelma`: Ohjelman käyttöliittymä. Tulostaa ohjeet ja ohjaa funktiokutsut eteenpäin käyttäjän valintojen mukaan.
 - `Levenshtein`: Varsinaisen laskennan suorittava luokka. Laskee editointietäisyydet, etsii sanakirjasta sopivia korjausvaihtoehtoja ja palauttaa ne käyttäjälle.
-- `LevenshteinService`: Käsittelee `Levenshtein`-luokalle suunnatut kutsut. Muokkaa (mahdollisesti) käyttäjän antamia syötteitä ennen eteenpäin lähettämistä.
+- `Lauseenkorjaaja`: Muodostaa lopullisen korjatun lauseen käyttäjän valintojen perusteella.
 - `TrieSolmu`: Sanakirjan käyttämä Trie-tietorakenne.
 
-## Ohjelman toiminta (Kesken)
+## Ohjelman toiminta
 
-Ohjelma toimii pääpiirteittäin seuraavasti:
+Käyttäjän syöttämä lause annetaan `Lauseenkorjaaja`-luokalle tarkasteltavaksi. Luokan `korjaa`-metodi tarkistaa jokaisen sanan kohdalla, löytyykö se sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `Levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista.
 
-Käyttäjä syöttää ohjelmalle lauseen. Ohjelma tarkistaa jokaisen sanan kohdalla, löytyykö se sanakirjasta. Jos sana löytyy, lisätään se lopulliseen korjattuun lauseeseen sellaisenaan. Jos sanaa ei ole sanakirjassa, ohjelma kutsuu `levenshtein`-luokan `etsi`-metodia, joka palauttaa listan mahdollisista korjausvaihtoehdoista. Korjausvaihtoehtojen valinta perustuu niin sanottuun editointietäisyyteen, joka ilmaisee kuinka monta eri operaatiota sanalle on tehtävä, että siitä saadaan jokin eri sana.
+### Editointietäisyys
+
+Korjausvaihtoehtojen valinta perustuu niin sanottuun editointietäisyyteen, joka ilmaisee kuinka monta eri operaatiota sanalle on tehtävä, että siitä saadaan jokin eri sana.
 
 Käytössä on neljä eri operaatiota:
 - poisto: morn**n**ing ==> morning
@@ -21,7 +23,7 @@ Käytössä on neljä eri operaatiota:
 
 Jokaisen operaation "kustannus" on yksi (1). Mitä pienempi kustannus, sitä suuremmalla todennäköisyydellä se on haluamamme sana.
 
-Etäisyydet lasketaan muodostamalla kaksiulotteinen taulukko:
+`Levenshtein`-luokka laskee etäisyydet muodostamalla kaksiulotteisen taulukon:
 
 |   |   | s | a | t | u | r | d | a | y |
 | - | - | - | - | - | - | - | - | - | - |
@@ -35,10 +37,12 @@ Etäisyydet lasketaan muodostamalla kaksiulotteinen taulukko:
 
 (Esimerkki [Wikipediasta](https://en.wikipedia.org/wiki/Levenshtein_distance))
 
-Jatkuu...
+Taulukon viimeinen luku ilmaisee lopullisen editointietäisyyden. Listalle lisätään kaikki sanakirjasta löytyvät sanat, joiden etäisyys annettuun sanaan ei ylitä koodiin määriteltyä maksimietäisyyttä.
 
-## Saavutetut aika- ja tilavaativuudet
-- Ei vielä selvillä
+### Trie-tietorakenne
+
+Sanasto on talletettu puumaiseen trie-tietorakenteeseen
+
 
 ## Puutteet ja parannusehdotukset
 - Sanasto on tällä hetkellä [wiktionarysta](https://en.lexipedia.org/), joka ikävä kyllä sisältää myös yleisiä kirjoitusvirheitä. Tämä ymmärrettävästi sotii ohjelman tarkoitusta vastaan. Sanasto on valittu koska se sisältää myös sanojen frekvenssit. Ilman frekvenssejä ohjelma saattaisi ehdottaa harvinaisia tai muuten outoja sanoja.
